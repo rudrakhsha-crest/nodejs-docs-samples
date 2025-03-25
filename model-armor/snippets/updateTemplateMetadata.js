@@ -80,6 +80,3 @@ async function main(
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node updateTemplateMetadata.js ma-crest-data-test-2 us-east4 rudy-metadata-template

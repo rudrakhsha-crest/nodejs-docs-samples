@@ -14,6 +14,12 @@
 
 'use strict';
 
+/**
+ * Retrieves the floor settings for a Google Cloud organization.
+ * 
+ * @param {string} organizationId - The ID of the Google Cloud organization for which to retrieve 
+ *                                 floor settings.
+ */
 async function main(organizationId) {
   // [START modelarmor_get_organization_floor_settings]
   /**
@@ -46,5 +52,3 @@ async function main(organizationId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// node getOrganizationFloorSettings.js 'your-organization-id' : command to run

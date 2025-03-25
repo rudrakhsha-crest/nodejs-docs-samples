@@ -14,6 +14,15 @@
 
 'use strict';
 
+/**
+ * Creates a Model Armor template with Responsible AI (RAI) filters.
+ * 
+ * This function creates a template that can be used for sanitizing user prompts and model responses.
+ *
+ * @param {string} projectId - Google Cloud project ID where the template will be created.
+ * @param {string} locationId - Google Cloud location (region) for the template, e.g., 'us-central1'.
+ * @param {string} templateId - Unique identifier for the new template.
+ */
 async function main(projectId, locationId, templateId) {
   // [START modelarmor_create_template]
   /**
@@ -72,6 +81,3 @@ async function main(projectId, locationId, templateId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node createTemplate.js ma-crest-data-test-2 us-central1 rudyzz1

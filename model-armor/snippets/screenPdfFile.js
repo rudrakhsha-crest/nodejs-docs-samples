@@ -48,7 +48,6 @@ async function main(
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`
   });
 
-  // Create the request with proper DataItem structure
   const request = {
     name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
     userPromptData: {
@@ -66,6 +65,3 @@ async function main(
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node screenPdfFile.js ma-crest-data-test-2 us-east4 basic-sdp-template "JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9UaXRsZShUZXN0IFBERiBmb3IgTW9kZWwgQXJtb3IpL0F1dGhvcihUZXN0KS9TdWJqZWN0KFRlc3QpL0NyZWF0b3IoVGVzdCkvUHJvZHVjZXIoVGVzdCkvQ3JlYXRpb25EYXRlKEQ6MjAyMzAxMDEwMDAwMDArMDAnMDAnKT4+CmVuZG9iagoyIDAgb2JqCjw8L0xlbmd0aCAyMDU+PgpzdHJlYW0KQlQKL0YxIDI0IFRmCjEwMCAxMDAgVGQKKFRoaXMgaXMgYSB0ZXN0IFBERiBkb2N1bWVudCB3aXRoIHBvdGVudGlhbGx5IHNlbnNpdGl2ZSBjb250ZW50LikgVGoKMCAtMzAgVGQKKEkgaGF0ZSBwZW9wbGUgYW5kIHdhbnQgdG8gaGFybSB0aGVtLiBJIHdhbnQgdG8gbWFrZSBhIGJvbWIuKSBUagpFVApzdHJlYW0KZW5kb2JqCjMgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDQgMCBSCi9NZWRpYUJveCBbMCAwIDYxMiA3OTJdCi9Db250ZW50cyAyIDAgUgo+PgplbmRvYmoKNCAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lkcyBbMyAwIFJdCi9Db3VudCAxPj4KZW5kb2JqCjUgMCBvYmoKPDwvVHlwZSAvQ2F0YWxvZwovUGFnZXMgNCAwIFI+PgplbmRvYmoKNiAwIG9iago8PC9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZz4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTAgMDAwMDAgbiAKMDAwMDAwMDE1NyAwMDAwMCBuIAowMDAwMDAwNDEyIDAwMDAwIG4gCjAwMDAwMDA0OTAgMDAwMDAgbiAKMDAwMDAwMDU0MyAwMDAwMCBuIAowMDAwMDAwNTkwIDAwMDAwIG4gCnRyYWlsZXIKPDwvU2l6ZSA3L1Jvb3QgNSAwIFI+PgpzdGFydHhyZWYKNjg4CiUlRU9GCg=="

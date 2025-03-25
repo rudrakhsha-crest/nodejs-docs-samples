@@ -41,7 +41,6 @@ async function main(
   const {ModelArmorClient} = modelarmor.v1;
   const {protos} = modelarmor;
 
-  // Access the enums from protos
   const RaiFilterType = protos.google.cloud.modelarmor.v1.RaiFilterType;
   const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
   const SdpBasicConfigEnforcement = protos.google.cloud.modelarmor.v1.SdpBasicConfig.SdpBasicConfigEnforcement;
@@ -100,6 +99,3 @@ async function main(
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node createTemplateWithBasicSdp.js ma-crest-data-test-2 us-east4 rudy-basic

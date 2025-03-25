@@ -79,7 +79,6 @@ async function main(
       }
     };
 
-    // Create a template with Responsible AI Filters
     const [createdTemplate] = await client.createTemplate({
       parent,
       templateId,

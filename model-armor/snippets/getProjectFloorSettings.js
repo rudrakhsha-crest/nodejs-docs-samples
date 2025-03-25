@@ -14,6 +14,12 @@
 
 'use strict';
 
+/**
+ * Retrieves the floor settings for a Google Cloud project.
+ *
+ * @param {string} projectId - The ID of the Google Cloud project for which to retrieve 
+ *                            floor settings.
+ */
 async function main(projectId) {
   // [START modelarmor_get_project_floor_settings]
   /**

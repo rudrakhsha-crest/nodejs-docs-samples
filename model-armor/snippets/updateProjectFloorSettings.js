@@ -63,6 +63,3 @@ async function main(projectId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node updateProjectFloorSettings.js PROJECT_ID

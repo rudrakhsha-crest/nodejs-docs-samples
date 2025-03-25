@@ -14,6 +14,13 @@
 
 'use strict';
 
+/**
+ * Lists Model Armor templates that match a specific filter criteria.
+ *
+ * @param {string} projectId - Google Cloud project ID to list templates from.
+ * @param {string} locationId - Google Cloud location (region) to list templates from, e.g., 'us-central1'.
+ * @param {string} templateId - Template ID to filter by. Only templates with this ID will be returned.
+ */
 async function main(projectId, locationId, templateId) {
   // [START modelarmor_list_templates_with_filter]
   /**
@@ -38,11 +45,9 @@ async function main(projectId, locationId, templateId) {
   async function listModelArmorTemplatesWithFilter() {
     const request = {
       parent: parent,
-      // Construct your filter string as needed
       filter: `name="${parent}/templates/${templateId}"`,
     };
   
-    // Use listTemplatesAsync to handle pagination automatically
     const iterable = await client.listTemplatesAsync(request);
 
     for await (const template of iterable) {
@@ -58,5 +63,3 @@ async function main(projectId, locationId, templateId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// node listTemplatesWithFilter.js ma-crest-data-test-2 us-east4 basic-sdp-template

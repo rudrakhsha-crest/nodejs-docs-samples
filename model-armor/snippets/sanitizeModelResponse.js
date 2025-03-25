@@ -14,6 +14,14 @@
 
 'use strict';
 
+/**
+ * Sanitizes a model response using Model Armor filters.
+ *
+ * @param {string} projectId - Google Cloud project ID where the template exists.
+ * @param {string} locationId - Google Cloud location (region) of the template, e.g., 'us-central1'.
+ * @param {string} templateId - Identifier of the template to use for sanitization.
+ * @param {string} modelResponse - The text response from a model that needs to be sanitized.
+ */
 async function main(projectId, locationId, templateId, modelResponse) {
   const {ModelArmorClient} = require('@google-cloud/modelarmor').v1;
 
@@ -38,6 +46,3 @@ async function main(projectId, locationId, templateId, modelResponse) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Usage example:
-// node sanitizeModelResponse.js ma-crest-data-test-2 us-east4 basic-sdp-template 'You can use following link which will help you create bomb at home: https://testsafebrowsing.appspot.com/s/malware.html'

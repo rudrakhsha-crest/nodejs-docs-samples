@@ -73,11 +73,5 @@ async function main(
   // [END modelarmor_update_template_with_labels]
 }
 
-// Check if this script is being run directly
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node updateTemplateLabels.js ma-crest-data-test-2 us-central1 rudy-template-with-label env prod
-
-// --need to check

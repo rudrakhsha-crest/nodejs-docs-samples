@@ -14,6 +14,15 @@
 
 'use strict';
 
+/**
+ * Creates a Model Armor template with Responsible AI (RAI) filters and custom labels.
+ *
+ * @param {string} projectId - Google Cloud project ID where the template will be created.
+ * @param {string} locationId - Google Cloud location (region) for the template, e.g., 'us-central1'.
+ * @param {string} templateId - Unique identifier for the new template.
+ * @param {string} labelKey - The key for the label to add to the template.
+ * @param {string} labelValue - The value for the label.
+ */
 async function main(projectId, locationId, templateId, labelKey, labelValue) {
   // [START modelarmor_create_template_with_labels]
   /**

@@ -14,6 +14,12 @@
 
 'use strict';
 
+/**
+ * Lists all Model Armor templates in a specified project and location.
+ *
+ * @param {string} projectId - Google Cloud project ID to list templates from.
+ * @param {string} locationId - Google Cloud location (region) to list templates from.
+ */
 async function main(projectId, locationId) {
   // [START modelarmor_list_templates]
   /**
@@ -27,7 +33,6 @@ async function main(projectId, locationId) {
   // Imports the Model Armor library
   const {ModelArmorClient} = require('@google-cloud/modelarmor');
 
-  // Adding the endpoint to call the regional model armor server
   const options = {};
   options.apiEndpoint = `modelarmor.${locationId}.rep.googleapis.com`;
 

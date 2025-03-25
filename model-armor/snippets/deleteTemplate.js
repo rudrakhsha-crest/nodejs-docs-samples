@@ -14,6 +14,13 @@
 
 'use strict';
 
+/**
+ * Deletes a Model Armor template.
+ *
+ * @param {string} projectId - Google Cloud project ID where the template exists.
+ * @param {string} locationId - Google Cloud location (region) of the template, e.g., 'us-central1'.
+ * @param {string} templateId - Identifier of the template to delete.
+ */
 async function main(projectId, locationId, templateId) {
   // [START modelarmor_delete_template]
   /**
@@ -28,7 +35,6 @@ async function main(projectId, locationId, templateId) {
   // Imports the Model Armor library
   const {ModelArmorClient} = require('@google-cloud/modelarmor');
 
-  // Adding the endpoint to call the regional model armor server
   const options = {};
   options.apiEndpoint = `modelarmor.${locationId}.rep.googleapis.com`;
 

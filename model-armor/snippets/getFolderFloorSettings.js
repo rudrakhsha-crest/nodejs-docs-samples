@@ -14,6 +14,11 @@
 
 'use strict';
 
+/**
+ * Retrieves the floor settings for a Google Cloud folder.
+ * 
+ * @param {string} folderId - The ID of the Google Cloud folder for which to retrieve floor settings.
+ */
 async function main(folderId) {
   // [START modelarmor_get_folder_floor_settings]
   /**
@@ -35,7 +40,6 @@ async function main(folderId) {
       name,
     };
 
-    // Run request
     const response = await modelarmorClient.getFloorSetting(request);
     console.log(response);
   }

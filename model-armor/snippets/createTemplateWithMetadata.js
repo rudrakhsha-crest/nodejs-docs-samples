@@ -41,7 +41,6 @@ async function main(
   const {ModelArmorClient} = modelarmor.v1;
   const {protos} = modelarmor;
 
-  // Access the enums from protos
   const RaiFilterType = protos.google.cloud.modelarmor.v1.RaiFilterType;
   const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
 
@@ -89,9 +88,5 @@ async function main(
   // [END modelarmor_create_template_with_metadata]
 }
 
-// Check if this script is being run directly
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node createTemplateWithMetadata.js ma-crest-data-test-2 us-east4 rudy-metadata-template

@@ -69,8 +69,3 @@ async function main(folderId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node updateFolderFloorSettings.js FOLDER_ID
-
-// --need to test

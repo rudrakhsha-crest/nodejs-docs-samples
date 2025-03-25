@@ -32,7 +32,6 @@ async function main(organizationId) {
 
   const client = new ModelArmorClient();
 
-  // Prepare organization floor setting path/name
   const floorSettingsName = `organizations/${organizationId}/locations/global/floorSetting`;
   
   // Build the floor settings with your preferred filters
@@ -65,6 +64,3 @@ async function main(organizationId) {
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example usage:
-// node updateOrganizationFloorSettings.js ORGANIZATION_ID

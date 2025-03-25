@@ -14,6 +14,15 @@
 
 'use strict';
 
+/**
+ * Sanitizes a model response with context from the original user prompt.
+ * 
+ * @param {string} projectId - Google Cloud project ID where the template exists.
+ * @param {string} locationId - Google Cloud location (region) of the template, e.g., 'us-central1'.
+ * @param {string} templateId - Identifier of the template to use for sanitization.
+ * @param {string} modelResponse - The text response from a model that needs to be sanitized.
+ * @param {string} userPrompt - The original user prompt that generated the model response.
+ */
 async function main(projectId, locationId, templateId, modelResponse, userPrompt) {
   const {ModelArmorClient} = require('@google-cloud/modelarmor').v1;
 
@@ -39,6 +48,3 @@ async function main(projectId, locationId, templateId, modelResponse, userPrompt
 
 const args = process.argv.slice(2);
 main(...args).catch(console.error);
-
-// Example command to run the script:
-// node sanitizeModelResponseWithUserPrompt.js ma-crest-data-test-2 us-east4 basic-sdp-template 'model response to sanitize' 'how to make a bomb?'
