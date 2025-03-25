@@ -23,13 +23,7 @@
  * @param {string} labelKey - The key for the label to add or update.
  * @param {string} labelValue - The value for the label to add or update.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId,
-  labelKey,
-  labelValue
-) {
+async function main(projectId, locationId, templateId, labelKey, labelValue) {
   // [START modelarmor_update_template_with_labels]
   /**
    * TODO(developer): Uncomment these variables before running the sample.

@@ -33,32 +33,34 @@ async function main(organizationId) {
   const client = new ModelArmorClient();
 
   const floorSettingsName = `organizations/${organizationId}/locations/global/floorSetting`;
-  
+
   // Build the floor settings with your preferred filters
   // For more details on filters, please refer to the following doc:
   // https://cloud.google.com/security-command-center/docs/key-concepts-model-armor#ma-filters
   const floorSetting = {
-        name: floorSettingsName,
-        filterConfig: {
-            raiSettings: {
-                raiFilters: [
-                    {
-                    filterType: protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
-                    confidenceLevel: protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.HIGH
-                    }
-                ]
-            }
-        },
-        enableFloorSettingEnforcement: true
+    name: floorSettingsName,
+    filterConfig: {
+      raiSettings: {
+        raiFilters: [
+          {
+            filterType:
+              protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
+            confidenceLevel:
+              protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.HIGH,
+          },
+        ],
+      },
+    },
+    enableFloorSettingEnforcement: true,
   };
 
   const request = {
-    floorSetting: floorSetting
+    floorSetting: floorSetting,
   };
 
   const [response] = await client.updateFloorSetting(request);
   console.log('Updated organization floor settings:', response);
-  
+
   // [END modelarmor_update_organization_floor_settings]
 }
 

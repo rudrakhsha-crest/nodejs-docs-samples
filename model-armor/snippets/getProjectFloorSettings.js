@@ -17,7 +17,7 @@
 /**
  * Retrieves the floor settings for a Google Cloud project.
  *
- * @param {string} projectId - The ID of the Google Cloud project for which to retrieve 
+ * @param {string} projectId - The ID of the Google Cloud project for which to retrieve
  *                            floor settings.
  */
 async function main(projectId) {

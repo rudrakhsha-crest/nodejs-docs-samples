@@ -33,8 +33,8 @@ async function main(projectId, locationId, templateId, modelResponse) {
     const request = {
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
       modelResponseData: {
-        text: modelResponse 
-      }
+        text: modelResponse,
+      },
     };
 
     const [response] = await client.sanitizeModelResponse(request);

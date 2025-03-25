@@ -21,11 +21,7 @@
  * @param {string} locationId - Google Cloud location where the template exists.
  * @param {string} templateId - ID of the template to update.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId
-) {
+async function main(projectId, locationId, templateId) {
   // [START modelarmor_update_template]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -38,9 +34,14 @@ async function main(
   const {ModelArmorClient} = modelarmor.v1;
   const {protos} = modelarmor;
 
-  const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
-  const PiAndJailbreakFilterEnforcement = protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings.PiAndJailbreakFilterEnforcement;
-  const MaliciousUriFilterEnforcement = protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings.MaliciousUriFilterEnforcement;
+  const DetectionConfidenceLevel =
+    protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
+  const PiAndJailbreakFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings
+      .PiAndJailbreakFilterEnforcement;
+  const MaliciousUriFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings
+      .MaliciousUriFilterEnforcement;
 
   // Instantiates a client
   const client = new ModelArmorClient({
@@ -67,7 +68,10 @@ async function main(
     };
 
     const [response] = await client.updateTemplate(request);
-    console.log('Updated template filter configuration:', response.filterConfig);
+    console.log(
+      'Updated template filter configuration:',
+      response.filterConfig
+    );
   }
 
   return callUpdateTemplate();

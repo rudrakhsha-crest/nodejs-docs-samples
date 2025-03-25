@@ -16,7 +16,7 @@
 
 /**
  * Creates a Model Armor template with Responsible AI (RAI) filters.
- * 
+ *
  * This function creates a template that can be used for sanitizing user prompts and model responses.
  *
  * @param {string} projectId - Google Cloud project ID where the template will be created.
@@ -51,12 +51,18 @@ async function main(projectId, locationId, templateId) {
         raiSettings: {
           raiFilters: [
             {
-              filterType: protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
-              confidenceLevel: protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.HIGH,
+              filterType:
+                protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
+              confidenceLevel:
+                protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.HIGH,
             },
             {
-              filterType: protos.google.cloud.modelarmor.v1.RaiFilterType.SEXUALLY_EXPLICIT,
-              confidenceLevel: protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.MEDIUM_AND_ABOVE,
+              filterType:
+                protos.google.cloud.modelarmor.v1.RaiFilterType
+                  .SEXUALLY_EXPLICIT,
+              confidenceLevel:
+                protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel
+                  .MEDIUM_AND_ABOVE,
             },
           ],
         },

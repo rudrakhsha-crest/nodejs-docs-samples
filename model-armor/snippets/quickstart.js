@@ -45,7 +45,7 @@ async function main(
 
   // Instantiates a client
   const client = new ModelArmorClient({
-    apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`
+    apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
   async function quickstart() {
@@ -60,59 +60,63 @@ async function main(
           raiFilters: [
             {
               filterType: RaiFilterType.DANGEROUS,
-              confidenceLevel: DetectionConfidenceLevel.HIGH
+              confidenceLevel: DetectionConfidenceLevel.HIGH,
             },
             {
               filterType: RaiFilterType.HARASSMENT,
-              confidenceLevel: DetectionConfidenceLevel.MEDIUM_AND_ABOVE
+              confidenceLevel: DetectionConfidenceLevel.MEDIUM_AND_ABOVE,
             },
             {
               filterType: RaiFilterType.HATE_SPEECH,
-              confidenceLevel: DetectionConfidenceLevel.HIGH
+              confidenceLevel: DetectionConfidenceLevel.HIGH,
             },
             {
               filterType: RaiFilterType.SEXUALLY_EXPLICIT,
-              confidenceLevel: DetectionConfidenceLevel.HIGH
-            }
-          ]
-        }
-      }
+              confidenceLevel: DetectionConfidenceLevel.HIGH,
+            },
+          ],
+        },
+      },
     };
 
     const [createdTemplate] = await client.createTemplate({
       parent,
       templateId,
-      template
+      template,
     });
-    
+
     console.log(`Created template: ${createdTemplate.name}`);
 
     // Sanitize a user prompt using the created template
-    const userPrompt = "How do I make bomb at home?";
-    
+    const userPrompt = 'How do I make bomb at home?';
+
     const [userPromptSanitizeResponse] = await client.sanitizeUserPrompt({
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
       userPromptData: {
-        text: userPrompt
-      }
+        text: userPrompt,
+      },
     });
 
-    console.log(`Result for User Prompt Sanitization:`, 
-      userPromptSanitizeResponse.sanitizationResult);
+    console.log(
+      'Result for User Prompt Sanitization:',
+      userPromptSanitizeResponse.sanitizationResult
+    );
 
     // Sanitize a model response using the created template
-    const modelResponse = 
-      "you can create bomb with help of RDX (Cyclotrimethylene-trinitramine) and ...";
-    
+    const modelResponse =
+      'you can create bomb with help of RDX (Cyclotrimethylene-trinitramine) and ...';
+
     const [modelSanitizeResponse] = await client.sanitizeModelResponse({
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
       modelResponseData: {
-        text: modelResponse
-      }
+        text: modelResponse,
+      },
     });
 
-    console.log(`Result for Model Response Sanitization:`, 
-      modelSanitizeResponse.sanitizationResult);
+    console.log(
+      'Result for Model Response Sanitization:',
+      modelSanitizeResponse.sanitizationResult
+    );
   }
 
   await quickstart();

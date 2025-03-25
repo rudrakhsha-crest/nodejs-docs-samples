@@ -21,11 +21,7 @@
  * @param {string} locationId - Google Cloud location where the template exists.
  * @param {string} templateId - ID of the template to update.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId
-) {
+async function main(projectId, locationId, templateId) {
   // [START modelarmor_update_template_with_mask_configuration]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -43,19 +39,24 @@ async function main(
 
   const {protos} = modelarmor;
 
-  const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
-  const PiAndJailbreakFilterEnforcement = protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings.PiAndJailbreakFilterEnforcement;
-  const MaliciousUriFilterEnforcement = protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings.MaliciousUriFilterEnforcement;
+  const DetectionConfidenceLevel =
+    protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
+  const PiAndJailbreakFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings
+      .PiAndJailbreakFilterEnforcement;
+  const MaliciousUriFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings
+      .MaliciousUriFilterEnforcement;
 
   async function callUpdateTemplateWithMaskConfiguration() {
     const templateName = `projects/${projectId}/locations/${locationId}/templates/${templateId}`;
-    
+
     // Build the Model Armor template with your preferred filters
     // For more details on filters, please refer to the following doc:
     // https://cloud.google.com/security-command-center/docs/key-concepts-model-armor#ma-filters
     const template = {
-    name: templateName,
-    filterConfig: {
+      name: templateName,
+      filterConfig: {
         piAndJailbreakFilterSettings: {
           filterEnforcement: PiAndJailbreakFilterEnforcement.ENABLED,
           confidenceLevel: DetectionConfidenceLevel.LOW_AND_ABOVE,
@@ -70,17 +71,16 @@ async function main(
     // Refer to following documentation for more details on update mask field and its usage:
     // https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask
     const updateMask = {
-        paths: ['filter_config']
+      paths: ['filter_config'],
     };
 
     const request = {
-        template: template,
-        updateMask: updateMask
+      template: template,
+      updateMask: updateMask,
     };
 
     const [response] = await client.updateTemplate(request);
     console.log(`Updated Model Armor Template: ${response.name}`);
-    
   }
 
   callUpdateTemplateWithMaskConfiguration();

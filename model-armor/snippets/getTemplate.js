@@ -16,7 +16,7 @@
 
 /**
  * Retrieves a Model Armor template by its ID.
- * 
+ *
  * @param {string} projectId - Google Cloud project ID where the template exists.
  * @param {string} locationId - Google Cloud location (region) of the template.
  * @param {string} templateId - Identifier of the template to retrieve.

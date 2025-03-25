@@ -16,7 +16,7 @@
 
 /**
  * Retrieves the floor settings for a Google Cloud folder.
- * 
+ *
  * @param {string} folderId - The ID of the Google Cloud folder for which to retrieve floor settings.
  */
 async function main(folderId) {

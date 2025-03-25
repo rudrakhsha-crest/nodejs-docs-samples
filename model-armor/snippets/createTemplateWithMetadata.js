@@ -21,11 +21,7 @@
  * @param {string} locationId - Google Cloud location where the template will be created.
  * @param {string} templateId - ID for the template to create.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId
-) {
+async function main(projectId, locationId, templateId) {
   // [START modelarmor_create_template_with_metadata]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -42,7 +38,8 @@ async function main(
   const {protos} = modelarmor;
 
   const RaiFilterType = protos.google.cloud.modelarmor.v1.RaiFilterType;
-  const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
+  const DetectionConfidenceLevel =
+    protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
 
   // Instantiates a client
   const client = new ModelArmorClient({

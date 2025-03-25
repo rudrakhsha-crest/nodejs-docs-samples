@@ -47,13 +47,11 @@ async function main(projectId, locationId, templateId) {
       parent: parent,
       filter: `name="${parent}/templates/${templateId}"`,
     };
-  
+
     const iterable = await client.listTemplatesAsync(request);
 
     for await (const template of iterable) {
-      console.log(
-        `Found template ${template.name}`
-      );
+      console.log(`Found template ${template.name}`);
     }
   }
 

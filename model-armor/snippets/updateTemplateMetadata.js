@@ -21,11 +21,7 @@
  * @param {string} locationId - Google Cloud location where the template exists.
  * @param {string} templateId - ID of the template to update.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId
-) {
+async function main(projectId, locationId, templateId) {
   // [START modelarmor_update_template_metadata]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -42,36 +38,41 @@ async function main(
   });
   const {protos} = modelarmor;
 
-   const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
-   const PiAndJailbreakFilterEnforcement = protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings.PiAndJailbreakFilterEnforcement;
-   const MaliciousUriFilterEnforcement = protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings.MaliciousUriFilterEnforcement; 
+  const DetectionConfidenceLevel =
+    protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
+  const PiAndJailbreakFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.PiAndJailbreakFilterSettings
+      .PiAndJailbreakFilterEnforcement;
+  const MaliciousUriFilterEnforcement =
+    protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings
+      .MaliciousUriFilterEnforcement;
 
   async function callUpdateTemplateMetadata() {
-      const templateName = `projects/${projectId}/locations/${locationId}/templates/${templateId}`;
-      
-      const template = {
-        name: templateName,
-        filterConfig: {
-            piAndJailbreakFilterSettings: {
-              filterEnforcement: PiAndJailbreakFilterEnforcement.ENABLED,
-              confidenceLevel: DetectionConfidenceLevel.LOW_AND_ABOVE,
-            },
-            maliciousUriFilterSettings: {
-              filterEnforcement: MaliciousUriFilterEnforcement.ENABLED,
-            },
+    const templateName = `projects/${projectId}/locations/${locationId}/templates/${templateId}`;
+
+    const template = {
+      name: templateName,
+      filterConfig: {
+        piAndJailbreakFilterSettings: {
+          filterEnforcement: PiAndJailbreakFilterEnforcement.ENABLED,
+          confidenceLevel: DetectionConfidenceLevel.LOW_AND_ABOVE,
         },
-        templateMetadata: {
-          ignorePartialInvocationFailures: true,
-          logSanitizeOperations: false
-        }
-      };
+        maliciousUriFilterSettings: {
+          filterEnforcement: MaliciousUriFilterEnforcement.ENABLED,
+        },
+      },
+      templateMetadata: {
+        ignorePartialInvocationFailures: true,
+        logSanitizeOperations: false,
+      },
+    };
 
-      const request = {
-        template: template
-      };
+    const request = {
+      template: template,
+    };
 
-      const [response] = await client.updateTemplate(request);
-      console.log(`Updated Model Armor Template: ${response.name}`);
+    const [response] = await client.updateTemplate(request);
+    console.log(`Updated Model Armor Template: ${response.name}`);
   }
 
   callUpdateTemplateMetadata();

@@ -16,14 +16,20 @@
 
 /**
  * Sanitizes a model response with context from the original user prompt.
- * 
+ *
  * @param {string} projectId - Google Cloud project ID where the template exists.
  * @param {string} locationId - Google Cloud location (region) of the template, e.g., 'us-central1'.
  * @param {string} templateId - Identifier of the template to use for sanitization.
  * @param {string} modelResponse - The text response from a model that needs to be sanitized.
  * @param {string} userPrompt - The original user prompt that generated the model response.
  */
-async function main(projectId, locationId, templateId, modelResponse, userPrompt) {
+async function main(
+  projectId,
+  locationId,
+  templateId,
+  modelResponse,
+  userPrompt
+) {
   const {ModelArmorClient} = require('@google-cloud/modelarmor').v1;
 
   const client = new ModelArmorClient({
@@ -34,9 +40,9 @@ async function main(projectId, locationId, templateId, modelResponse, userPrompt
     const request = {
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
       modelResponseData: {
-        text: modelResponse
+        text: modelResponse,
       },
-      userPrompt: userPrompt
+      userPrompt: userPrompt,
     };
 
     const [response] = await client.sanitizeModelResponse(request);

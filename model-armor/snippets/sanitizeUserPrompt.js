@@ -16,7 +16,7 @@
 
 /**
  * Sanitizes a user prompt using Model Armor filters.
- * 
+ *
  * @param {string} projectId - Google Cloud project ID where the template exists.
  * @param {string} locationId - Google Cloud location (region) of the template.
  * @param {string} templateId - Identifier of the template to use for sanitization.
@@ -33,13 +33,12 @@ async function main(projectId, locationId, templateId, userPrompt) {
     const request = {
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
       userPromptData: {
-        text: userPrompt
-      }
+        text: userPrompt,
+      },
     };
 
     const [response] = await client.sanitizeUserPrompt(request);
-    console.log("Sanitized user prompt:", response);
-    
+    console.log('Sanitized user prompt:', response);
   }
 
   sanitizeUserPrompt();

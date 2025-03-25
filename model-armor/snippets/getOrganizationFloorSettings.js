@@ -16,8 +16,8 @@
 
 /**
  * Retrieves the floor settings for a Google Cloud organization.
- * 
- * @param {string} organizationId - The ID of the Google Cloud organization for which to retrieve 
+ *
+ * @param {string} organizationId - The ID of the Google Cloud organization for which to retrieve
  *                                 floor settings.
  */
 async function main(organizationId) {

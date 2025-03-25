@@ -22,12 +22,7 @@
  * @param {string} templateId - The template ID used for sanitization.
  * @param {string} pdfContentBase64 - Base64-encoded PDF content to sanitize.
  */
-async function main(
-  projectId,
-  locationId,
-  templateId,
-  pdfContentBase64
-) {
+async function main(projectId, locationId, templateId, pdfContentBase64) {
   // [START modelarmor_screen_pdf_file]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
@@ -41,11 +36,12 @@ async function main(
   const modelarmor = require('@google-cloud/modelarmor');
   const {ModelArmorClient} = modelarmor.v1;
   const {protos} = modelarmor;
-  const ByteItemType = protos.google.cloud.modelarmor.v1.ByteDataItem.ByteItemType;
+  const ByteItemType =
+    protos.google.cloud.modelarmor.v1.ByteDataItem.ByteItemType;
 
   // Instantiates a client
   const client = new ModelArmorClient({
-    apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`
+    apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
   const request = {
@@ -53,9 +49,9 @@ async function main(
     userPromptData: {
       byteItem: {
         byteDataType: ByteItemType.PDF,
-        byteData: pdfContentBase64
-      }
-    }
+        byteData: pdfContentBase64,
+      },
+    },
   };
 
   const [response] = await client.sanitizeUserPrompt(request);

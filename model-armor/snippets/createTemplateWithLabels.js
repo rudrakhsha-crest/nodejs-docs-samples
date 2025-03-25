@@ -35,7 +35,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
   // const labelValue = 'production';
 
   const parent = `projects/${projectId}/locations/${locationId}`;
-  
+
   // Imports the Model Armor library
   const modelarmor = require('@google-cloud/modelarmor');
   const {ModelArmorClient} = modelarmor.v1;
@@ -45,7 +45,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
   const client = new ModelArmorClient({
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
-  
+
   async function callCreateTemplateWithLabels() {
     // Construct the request with template configuration and labels
     const request = {
@@ -56,12 +56,19 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
           raiSettings: {
             raiFilters: [
               {
-                filterType: protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
-                confidenceLevel: protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.HIGH,
+                filterType:
+                  protos.google.cloud.modelarmor.v1.RaiFilterType.HATE_SPEECH,
+                confidenceLevel:
+                  protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel
+                    .HIGH,
               },
               {
-                filterType: protos.google.cloud.modelarmor.v1.RaiFilterType.SEXUALLY_EXPLICIT,
-                confidenceLevel: protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel.MEDIUM_AND_ABOVE,
+                filterType:
+                  protos.google.cloud.modelarmor.v1.RaiFilterType
+                    .SEXUALLY_EXPLICIT,
+                confidenceLevel:
+                  protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel
+                    .MEDIUM_AND_ABOVE,
               },
             ],
           },

@@ -48,7 +48,8 @@ async function main(
   const {protos} = modelarmor;
 
   const RaiFilterType = protos.google.cloud.modelarmor.v1.RaiFilterType;
-  const DetectionConfidenceLevel = protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
+  const DetectionConfidenceLevel =
+    protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
 
   // Instantiates a client
   const client = new ModelArmorClient({
