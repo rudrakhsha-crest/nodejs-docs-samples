@@ -21,8 +21,8 @@ const {ModelArmorClient} = require('@google-cloud/modelarmor').v1;
 
 let projectId;
 const locationId = process.env.GCLOUD_LOCATION || 'us-central1';
-const folderId = process.env.FOLDER_ID || '123456789012';
-const organizationId = process.env.ORGANIZATION_ID || '123456789012';
+const folderId = process.env.FOLDER_ID ;
+const organizationId = process.env.ORGANIZATION_ID;
 const pdfContentBase64 = "JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PC9UaXRsZShUZXN0IFBERiBmb3IgTW9kZWwgQXJtb3IpL0F1dGhvcihUZXN0KS9TdWJqZWN0KFRlc3QpL0NyZWF0b3IoVGVzdCkvUHJvZHVjZXIoVGVzdCkvQ3JlYXRpb25EYXRlKEQ6MjAyMzAxMDEwMDAwMDArMDAnMDAnKT4+CmVuZG9iagoyIDAgb2JqCjw8L0xlbmd0aCAyMDU+PgpzdHJlYW0KQlQKL0YxIDI0IFRmCjEwMCAxMDAgVGQKKFRoaXMgaXMgYSB0ZXN0IFBERiBkb2N1bWVudCB3aXRoIHBvdGVudGlhbGx5IHNlbnNpdGl2ZSBjb250ZW50LikgVGoKMCAtMzAgVGQKKEkgaGF0ZSBwZW9wbGUgYW5kIHdhbnQgdG8gaGFybSB0aGVtLiBJIHdhbnQgdG8gbWFrZSBhIGJvbWIuKSBUagpFVApzdHJlYW0KZW5kb2JqCjMgMCBvYmoKPDwvVHlwZSAvUGFnZQovUGFyZW50IDQgMCBSCi9NZWRpYUJveCBbMCAwIDYxMiA3OTJdCi9Db250ZW50cyAyIDAgUgo+PgplbmRvYmoKNCAwIG9iago8PC9UeXBlIC9QYWdlcwovS2lkcyBbMyAwIFJdCi9Db3VudCAxPj4KZW5kb2JqCjUgMCBvYmoKPDwvVHlwZSAvQ2F0YWxvZwovUGFnZXMgNCAwIFI+PgplbmRvYmoKNiAwIG9iago8PC9UeXBlIC9Gb250Ci9TdWJ0eXBlIC9UeXBlMQovQmFzZUZvbnQgL0hlbHZldGljYQovRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZz4+CmVuZG9iagp4cmVmCjAgNwowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMTAgMDAwMDAgbiAKMDAwMDAwMDE1NyAwMDAwMCBuIAowMDAwMDAwNDEyIDAwMDAwIG4gCjAwMDAwMDA0OTAgMDAwMDAgbiAKMDAwMDAwMDU0MyAwMDAwMCBuIAowMDAwMDAwNTkwIDAwMDAwIG4gCnRyYWlsZXIKPDwvU2l6ZSA3L1Jvb3QgNSAwIFI+PgpzdGFydHhyZWYKNjg4CiUlRU9GCg==";
 const options = {
   apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
@@ -31,11 +31,9 @@ const options = {
 const client = new ModelArmorClient(options);
 const templateIdPrefix = `test-template-${uuidv4().substring(0, 8)}`;
 
-const inspectTemplate = process.env.INSPECT_TEMPLATE || 'basic-sdp-template';
-const deidentifyTemplate = process.env.DEIDENTIFY_TEMPLATE || 'basic-sdp-template';
-
 let emptyTemplateId;
 let basicTemplateId;
+let basicSdpTemplateId;
 
 // RAI test cases for prompt testing
 const raiFilterPromptTestCases = [
@@ -115,7 +113,7 @@ describe('Model Armor tests', function() {
     });
 
     // Create a basic SDP template for testing
-    const basicSdpTemplateId = `${templateIdPrefix}-basic-sdp`;
+    basicSdpTemplateId = `${templateIdPrefix}-basic-sdp`;
     await createTemplate(basicSdpTemplateId, {
         filterConfig: {
           raiSettings: {
@@ -275,6 +273,8 @@ describe('Model Armor tests', function() {
   
   it('should create a template with advanced SDP settings', async () => {
     const testTemplateId = `${templateIdPrefix}-adv-sdp`;
+    const inspectTemplate = basicSdpTemplateId;
+    const deidentifyTemplate = basicSdpTemplateId;
     
     const fullInspectTemplate = `projects/${projectId}/locations/${locationId}/inspectTemplates/${inspectTemplate}`;
     const fullDeidentifyTemplate = `projects/${projectId}/locations/${locationId}/deidentifyTemplates/${deidentifyTemplate}`;
