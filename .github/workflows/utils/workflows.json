@@ -79,6 +79,7 @@
   "mediatranslation",
   "monitoring/prometheus",
   "monitoring/snippets",
+  "model-armor",
   "retail",
   "run/filesystem",
   "scheduler",
