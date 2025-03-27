@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,8 +44,11 @@ async function main(projectId, locationId, templateId) {
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
-  async function callCreateTemplate() {
-    // Configuration for the template using proper enum values
+  async function createTemplate() {
+    /**  Build the Model Armor template with your preferred filters.
+        For more details on filters, please refer to the following doc:
+        https://cloud.google.com/security-command-center/docs/key-concepts-model-armor#ma-filters
+     */
     const templateConfig = {
       filterConfig: {
         raiSettings: {
@@ -81,7 +84,7 @@ async function main(projectId, locationId, templateId) {
     console.log(`Created template: ${response.name}`);
   }
 
-  callCreateTemplate();
+  createTemplate();
   // [END modelarmor_create_template]
 }
 

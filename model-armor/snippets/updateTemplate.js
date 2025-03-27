@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ async function main(projectId, locationId, templateId) {
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
-  async function callUpdateTemplate() {
+  async function updateTemplate() {
     // Build the updated template configuration
     const updatedTemplate = {
       name: `projects/${projectId}/locations/${locationId}/templates/${templateId}`,
@@ -74,7 +74,7 @@ async function main(projectId, locationId, templateId) {
     );
   }
 
-  return callUpdateTemplate();
+  return updateTemplate();
   // [END modelarmor_update_template]
 }
 

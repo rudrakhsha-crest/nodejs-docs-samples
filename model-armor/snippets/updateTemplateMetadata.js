@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,11 +32,11 @@ async function main(projectId, locationId, templateId) {
 
   const modelarmor = require('@google-cloud/modelarmor');
   const {ModelArmorClient} = modelarmor.v1;
+  const {protos} = modelarmor;
 
   const client = new ModelArmorClient({
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
-  const {protos} = modelarmor;
 
   const DetectionConfidenceLevel =
     protos.google.cloud.modelarmor.v1.DetectionConfidenceLevel;
@@ -47,7 +47,7 @@ async function main(projectId, locationId, templateId) {
     protos.google.cloud.modelarmor.v1.MaliciousUriFilterSettings
       .MaliciousUriFilterEnforcement;
 
-  async function callUpdateTemplateMetadata() {
+  async function updateTemplateMetadata() {
     const templateName = `projects/${projectId}/locations/${locationId}/templates/${templateId}`;
 
     const template = {
@@ -75,7 +75,7 @@ async function main(projectId, locationId, templateId) {
     console.log(`Updated Model Armor Template: ${response.name}`);
   }
 
-  callUpdateTemplateMetadata();
+  updateTemplateMetadata();
   // [END modelarmor_update_template_metadata]
 }
 

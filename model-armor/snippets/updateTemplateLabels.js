@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -41,7 +41,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
-  async function callUpdateTemplateWithLabels() {
+  async function updateTemplateLabels() {
     const labels = {};
     labels[labelKey] = labelValue;
 
@@ -63,7 +63,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
     console.log(`Updated Model Armor Template: ${response.name}`);
   }
 
-  return callUpdateTemplateWithLabels();
+  return updateTemplateLabels();
   // [END modelarmor_update_template_with_labels]
 }
 

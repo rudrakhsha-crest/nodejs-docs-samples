@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
     apiEndpoint: `modelarmor.${locationId}.rep.googleapis.com`,
   });
 
-  async function callCreateTemplateWithLabels() {
+  async function createTemplateWithLabels() {
     // Construct the request with template configuration and labels
     const request = {
       parent,
@@ -84,7 +84,7 @@ async function main(projectId, locationId, templateId, labelKey, labelValue) {
     console.log(`Created template: ${response.name}`);
   }
 
-  callCreateTemplateWithLabels();
+  createTemplateWithLabels();
   // [END modelarmor_create_template_with_labels]
 }
 

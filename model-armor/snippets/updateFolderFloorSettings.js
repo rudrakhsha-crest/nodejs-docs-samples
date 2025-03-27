@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ async function main(folderId) {
   // Instantiates a client
   const client = new ModelArmorClient();
 
-  async function callUpdateFolderFloorSettings() {
+  async function updateFolderFloorSettings() {
     const floorSettingsName = `folders/${folderId}/locations/global/floorSetting`;
 
     // Build the floor settings with your preferred filters
@@ -65,7 +65,7 @@ async function main(folderId) {
     console.log('Updated folder floor settings', response);
   }
 
-  callUpdateFolderFloorSettings();
+  updateFolderFloorSettings();
   // [END modelarmor_update_folder_floor_settings]
 }
 
